@@ -74,38 +74,6 @@ class CRUDController extends AbstractController implements ContainerAwareInterfa
     private $templateRegistry;
 
     /**
-     * NEXT_MAJOR: We should not use this method for configuration, create a listener to call configureAdmin method.
-     */
-    public function setContainer(?ContainerInterface $container = null): ?ContainerInterface
-    {
-        $this->container = $container;
-
-        $this->configure('sonata_deprecation_mute');
-    }
-
-    /**
-     * NEXT_MAJOR: Remove this method.
-     *
-     * @see renderWithExtraParams()
-     *
-     * @param string               $view       The view name
-     * @param array<string, mixed> $parameters An array of parameters to pass to the view
-     *
-     * @return Response A Response instance
-     *
-     * @deprecated since sonata-project/admin-bundle 3.27, to be removed in 4.0. Use Sonata\AdminBundle\Controller\CRUDController::renderWithExtraParams() instead.
-     */
-    public function render($view, array $parameters = [], ?Response $response = null): Response
-    {
-        @trigger_error(sprintf(
-            'Method %1$s::render has been renamed to %1$s::renderWithExtraParams.',
-            __CLASS__
-        ), \E_USER_DEPRECATED);
-
-        return $this->renderWithExtraParams($view, $parameters, $response);
-    }
-
-    /**
      * Renders a view while passing mandatory parameters on to the template.
      *
      * @param string               $view       The view name

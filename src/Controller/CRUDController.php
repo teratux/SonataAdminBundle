@@ -50,7 +50,7 @@ use Symfony\Component\Security\Csrf\CsrfToken;
  *
  * @phpstan-template T of object
  */
-class CRUDController extends Controller implements ContainerAwareInterface
+class CRUDController extends AbstractController implements ContainerAwareInterface
 {
     /**
      * @var \Symfony\Component\DependencyInjection\ContainerInterface

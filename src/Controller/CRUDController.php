@@ -26,7 +26,6 @@ use Sonata\AdminBundle\Templating\TemplateRegistryInterface;
 use Sonata\AdminBundle\Util\AdminObjectAclData;
 use Sonata\AdminBundle\Util\AdminObjectAclManipulator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Form\FormInterface;
@@ -50,7 +49,7 @@ use Symfony\Component\Security\Csrf\CsrfToken;
  *
  * @phpstan-template T of object
  */
-class CRUDController extends AbstractController implements ContainerAwareInterface
+class CRUDController extends AbstractController
 {
     /**
      * @var \Symfony\Component\DependencyInjection\ContainerInterface

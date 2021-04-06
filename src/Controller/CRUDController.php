@@ -116,9 +116,7 @@ class CRUDController extends AbstractController implements ContainerAwareInterfa
         // set the theme for the current Admin Form
         $this->setFormTheme($formView, $this->admin->getFilterTheme());
 
-        // NEXT_MAJOR: Remove this line and use commented line below it instead
-        $template = $this->admin->getTemplate('list');
-        // $template = $this->templateRegistry->getTemplate('list');
+        $template = $this->templateRegistry->getTemplate('list');
 
         return $this->renderWithExtraParams($template, [
             'action' => 'list',
@@ -229,9 +227,7 @@ class CRUDController extends AbstractController implements ContainerAwareInterfa
             return $this->redirectTo($object);
         }
 
-        // NEXT_MAJOR: Remove this line and use commented line below it instead
-        $template = $this->admin->getTemplate('delete');
-        // $template = $this->templateRegistry->getTemplate('delete');
+        $template = $this->templateRegistry->getTemplate('delete');
 
         return $this->renderWithExtraParams($template, [
             'object' => $object,
@@ -352,9 +348,7 @@ class CRUDController extends AbstractController implements ContainerAwareInterfa
         // set the theme for the current Admin Form
         $this->setFormTheme($formView, $this->admin->getFormTheme());
 
-        // NEXT_MAJOR: Remove this line and use commented line below it instead
-        $template = $this->admin->getTemplate($templateKey);
-        // $template = $this->templateRegistry->getTemplate($templateKey);
+        $template = $this->templateRegistry->getTemplate($templateKey);
 
         return $this->renderWithExtraParams($template, [
             'action' => 'edit',
@@ -468,13 +462,9 @@ class CRUDController extends AbstractController implements ContainerAwareInterfa
             $formView = $datagrid->getForm()->createView();
             $this->setFormTheme($formView, $this->admin->getFilterTheme());
 
-            // NEXT_MAJOR: Remove these lines and use commented lines below them instead
             $template = !empty($batchActions[$action]['template']) ?
                 $batchActions[$action]['template'] :
-                $this->admin->getTemplate('batch_confirmation');
-            // $template = !empty($batchActions[$action]['template']) ?
-            //     $batchActions[$action]['template'] :
-            //     $this->templateRegistry->getTemplate('batch_confirmation');
+                $this->templateRegistry->getTemplate('batch_confirmation');
 
             return $this->renderWithExtraParams($template, [
                 'action' => 'list',
@@ -620,9 +610,7 @@ class CRUDController extends AbstractController implements ContainerAwareInterfa
         // set the theme for the current Admin Form
         $this->setFormTheme($formView, $this->admin->getFormTheme());
 
-        // NEXT_MAJOR: Remove this line and use commented line below it instead
-        $template = $this->admin->getTemplate($templateKey);
-        // $template = $this->templateRegistry->getTemplate($templateKey);
+        $template = $this->templateRegistry->getTemplate($templateKey);
 
         return $this->renderWithExtraParams($template, [
             'action' => 'create',
@@ -673,9 +661,7 @@ class CRUDController extends AbstractController implements ContainerAwareInterfa
         $fields = $this->admin->getShow();
         \assert($fields instanceof FieldDescriptionCollection);
 
-        // NEXT_MAJOR: Remove this line and use commented line below it instead
-        $template = $this->admin->getTemplate('show');
-        //$template = $this->templateRegistry->getTemplate('show');
+        $template = $this->templateRegistry->getTemplate('show');
 
         return $this->renderWithExtraParams($template, [
             'action' => 'show',
@@ -726,9 +712,7 @@ class CRUDController extends AbstractController implements ContainerAwareInterfa
 
         $revisions = $reader->findRevisions($this->admin->getClass(), $id);
 
-        // NEXT_MAJOR: Remove this line and use commented line below it instead
-        $template = $this->admin->getTemplate('history');
-        // $template = $this->templateRegistry->getTemplate('history');
+        $template = $this->templateRegistry->getTemplate('history');
 
         return $this->renderWithExtraParams($template, [
             'action' => 'history',
@@ -784,9 +768,7 @@ class CRUDController extends AbstractController implements ContainerAwareInterfa
 
         $this->admin->setSubject($object);
 
-        // NEXT_MAJOR: Remove this line and use commented line below it instead
-        $template = $this->admin->getTemplate('show');
-        // $template = $this->templateRegistry->getTemplate('show');
+        $template = $this->templateRegistry->getTemplate('show');
 
         return $this->renderWithExtraParams($template, [
             'action' => 'show',
@@ -875,9 +857,7 @@ class CRUDController extends AbstractController implements ContainerAwareInterfa
 
         $this->admin->setSubject($baseObject);
 
-        // NEXT_MAJOR: Remove this line and use commented line below it instead
-        $template = $this->admin->getTemplate('show_compare');
-        // $template = $this->templateRegistry->getTemplate('show_compare');
+        $template = $this->templateRegistry->getTemplate('show_compare');
 
         return $this->renderWithExtraParams($template, [
             'action' => 'show',
@@ -1023,9 +1003,7 @@ class CRUDController extends AbstractController implements ContainerAwareInterfa
             }
         }
 
-        // NEXT_MAJOR: Remove this line and use commented line below it instead
-        $template = $this->admin->getTemplate('acl');
-        // $template = $this->templateRegistry->getTemplate('acl');
+        $template = $this->templateRegistry->getTemplate('acl');
 
         return $this->renderWithExtraParams($template, [
             'action' => 'acl',
@@ -1220,14 +1198,10 @@ class CRUDController extends AbstractController implements ContainerAwareInterfa
     protected function getBaseTemplate()
     {
         if ($this->isXmlHttpRequest()) {
-            // NEXT_MAJOR: Remove this line and use commented line below it instead
-            return $this->admin->getTemplate('ajax');
-            // return $this->templateRegistry->getTemplate('ajax');
+            return $this->templateRegistry->getTemplate('ajax');
         }
 
-        // NEXT_MAJOR: Remove this line and use commented line below it instead
-        return $this->admin->getTemplate('layout');
-        // return $this->templateRegistry->getTemplate('layout');
+        return $this->templateRegistry->getTemplate('layout');
     }
 
     /**

@@ -25,7 +25,7 @@ use Sonata\AdminBundle\FieldDescription\FieldDescriptionCollection;
 use Sonata\AdminBundle\Templating\TemplateRegistryInterface;
 use Sonata\AdminBundle\Util\AdminObjectAclData;
 use Sonata\AdminBundle\Util\AdminObjectAclManipulator;
-use Symfony\Bundle\FrameworkBundle\Controller\ControllerTrait;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -50,13 +50,8 @@ use Symfony\Component\Security\Csrf\CsrfToken;
  *
  * @phpstan-template T of object
  */
-class CRUDController implements ContainerAwareInterface
+class CRUDController extends Controller implements ContainerAwareInterface
 {
-    // NEXT_MAJOR: Don't use these traits anymore (inherit from Controller instead)
-    use ContainerAwareTrait, ControllerTrait {
-        ControllerTrait::render as originalRender;
-    }
-
     /**
      * @var \Symfony\Component\DependencyInjection\ContainerInterface
      */
@@ -120,8 +115,7 @@ class CRUDController implements ContainerAwareInterface
      */
     public function renderWithExtraParams($view, array $parameters = [], ?Response $response = null)
     {
-        //NEXT_MAJOR: Remove method alias and use $this->render() directly.
-        return $this->originalRender($view, $this->addRenderExtraParams($parameters), $response);
+        return $this->render($view, $this->addRenderExtraParams($parameters), $response);
     }
 
     /**

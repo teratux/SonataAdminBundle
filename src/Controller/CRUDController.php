@@ -76,7 +76,7 @@ class CRUDController extends AbstractController implements ContainerAwareInterfa
     /**
      * NEXT_MAJOR: We should not use this method for configuration, create a listener to call configureAdmin method.
      */
-    public function setContainer(?ContainerInterface $container = null)
+    public function setContainer(?ContainerInterface $container = null): ?ContainerInterface
     {
         $this->container = $container;
 
@@ -95,7 +95,7 @@ class CRUDController extends AbstractController implements ContainerAwareInterfa
      *
      * @deprecated since sonata-project/admin-bundle 3.27, to be removed in 4.0. Use Sonata\AdminBundle\Controller\CRUDController::renderWithExtraParams() instead.
      */
-    public function render($view, array $parameters = [], ?Response $response = null)
+    public function render($view, array $parameters = [], ?Response $response = null): Response
     {
         @trigger_error(sprintf(
             'Method %1$s::render has been renamed to %1$s::renderWithExtraParams.',
